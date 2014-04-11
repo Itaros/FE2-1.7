@@ -16,6 +16,8 @@ import forestry.api.apiculture.IBeeRoot;
 import forestry.api.genetics.IAllele;
 import forestry.api.genetics.IGenome;
 import forestryextras.main.init.FEBees;
+import org.apache.logging.log4j.Level;
+import cpw.mods.fml.common.FMLLog;
 
 public class BeeMutation implements IBeeMutation
 {	
@@ -29,6 +31,14 @@ public class BeeMutation implements IBeeMutation
 	{
 		this.parent1 = species0;
 		this.parent2 = species1;
+		
+		if(this.parent1 == null){
+			FMLLog.log(Level.FATAL, "parent1 is null. This is serious bug!");
+		}
+		if(this.parent2 == null){
+			FMLLog.log(Level.FATAL, "parent2 is null. This is serious bug!");
+		}		
+		
 		this.mutationTemplate = resultSpeciesGenome;
 		this.baseChance = percentChance;
 		this.isSecret = false;
